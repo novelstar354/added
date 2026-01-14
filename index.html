@@ -52,7 +52,116 @@ a<!DOCTYPE html>
 </style>
 </head>
 <body>
-<section style="position: relative; background-color: rgba(0,0,0,0.5); z-index: 3;color:#969696;width:300px;font-size:18px;padding:15px 30px;">
+<section style="position: relative; background-color: rgba(0,0,0,0.5); z-index: 3;color:#969696;width:300px;font-size:18px;padding:15px 30px;font-family:sans-serif;">
+  <p><b>YANKEE　　OSCAR　　UNIFORM<br>HOTEL　ALPHA　VICTOR ECHO<br>NOVEMBER　 OSCAR　 WHISKY<br>BRAVO　  　 ECHO 　　  ECHO<br>NOVEMBER　　ALPHA　　DELTA<br> DELTA ECHO DELTA 7A35090F </b></p>
+</section>
+
+  <canvas id="matrix"></canvas>
+  <div class="background" id="background"></div>
+  <div class="message" id="message"></div>
+
+<script>
+// ---------------- タイピング＋ランダム16進数 ----------------
+
+
+// ---------------- 背景スクロール文字 ----------------
+
+
+// ---------------- マトリックス風文字 ----------------
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789アイウエオカキクケコサシスセソタチツテトナニヌネノマミムメモヤユヨワヲン";
+const fontSize = 12;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = Array(columns).fill(1);
+
+function drawMatrix() {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#0f0";
+  ctx.font = fontSize + "px monospace";
+
+  for (let i = 0; i < drops.length; i++) {
+    const text = letters[Math.floor(Math.random() * letters.length)];
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+}
+
+setInterval(drawMatrix, 50);
+
+// ウィンドウリサイズ対応
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+</body>
+</html>
+a<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>042933964230</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    margin: 0;
+    background-color: #000;
+    color: #0f0;
+    font-family: monospace;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  
+
+  /* 背景スクロール文字 */
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: rgba(0,255,0,0.1);
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  @keyframes scroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+
+  /* マトリックス風キャンバス */
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+/*YANKEE OSCAR UNIFORM HOTEL ALPHA VICTOR ECHO NOVEMBER OSCAR WHISKY BRAVO ECHO ECHO NOVEMBER ALPHA DELTA DELTA ECHO DELTA 7A35090F*/
+/*YANKEE　　OSCAR　　UNIFORM　　HOTEL　　ALPHA　　VICTOR　　ECHO　　NOVEMBEMBER　　OSCAR　　WHISKY　　BRAVO　　ECHO　　ECHO　　NOVEMBER ALPHA DELTA DELTA ECHO DELTA　　7A35090F*/
+</style>
+</head>
+<body>
+<section style="position: relative; background-color: rgba(0,0,0,0.5); z-index: 3;color:#969696;width:300px;font-size:18px;padding:15px 30px;font-family:sans-serif;">
   <p><b>YANKEE　　OSCAR　　UNIFORM<br>HOTEL　ALPHA　VICTOR ECHO<br>NOVEMBER　 OSCAR　 WHISKY<br>BRAVO　  　 ECHO 　　  ECHO<br>NOVEMBER　　ALPHA　　DELTA<br> DELTA ECHO DELTA 7A35090F </b></p>
 </section>
 
